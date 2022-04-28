@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% if message %}
+        <div>
+        <script>
+            myFunction()
+            function myFunction()
+            {
+                alert("Inserted a part name");
+                window.location.replace("http://localhost:5000/home");
+            }
+        </script>
+        </div>
+    {% endif %}
+
+{% endblock %}

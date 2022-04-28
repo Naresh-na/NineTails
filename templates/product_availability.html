@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <br>
+    <div>
+        <table>
+            <tr>
+                <th>PART ID</th>
+                <th>PART NAME</th>
+            </tr>
+            {% for prows in prows %}
+                <tr>
+                    <td>{{ prows[0] }}</td>
+                    <td>{{ prows[1] }}</td>
+                </tr>
+                </table>
+                </div><br><br>
+                <div>
+                <table>
+                <tr>
+                    <th>VENDOR ID</th>
+                    <th>VENDOR NAME</th>
+                    <th>ADDRESS</th>
+                </tr>
+                {% for rows in vrows %}
+                    <tr>
+                        <td>{{ rows[0] }}</td>
+                        <td>{{ rows[1] }}</td>
+                        <td>{{ rows[2] }}</td>
+                        <td style="width: 0px;background-color: white;border: none;"><a
+                                href="/delete_vendor_availability/{{ rows[0] }}/{{ prows[0] }}"
+                                class="btn btn-outline-secondary">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}{% endfor %}
+            </table><br><br><br>
+        <button>  <a href="http://localhost:5000/home"> Back </a> </button>
+            </div>
+
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
+</div>
+    <div>
+        <form action="" method="post">
+            <label for="pid">product availability</label><br>
+            <input type="text" id="pid" name="pid" placeholder="Enter part_id" required>
+
+            <input type="submit" value="Search"/>
+
+        </form>
+        <br>
+    </div>
+    <div>
+        <table id="myTable">
+            <tr>
+                <th>PART ID</th>
+                <th>PART NAME</th>
+            </tr>
+            {% for rows in rows %}
+                <tr>
+                    <td>{{ rows[0] }}</td>
+                    <td>{{ rows[1] }}</td>
+                    <td style="width: 0px;background-color: white;border: none;"><a href="/check_vendors/{{ rows[0] }}" class="btn btn-outline-secondary">Check Vendors</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div><br><br><br><br><br>
+
+    <script>
+function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName('tr');
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
+{% endblock body %}

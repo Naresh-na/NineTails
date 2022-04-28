@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h2>New part</h2>
+
+    <form action="" method="post">
+
+        <label for="pname">Part name:</label>
+        <input type="text" id="pname" name="pname" required><br><br>
+
+        <input type="submit" value="Insert" button onclick="msg()"/>
+         <button> <a href="http://localhost:5000/parts"> Cancel </a> </button>
+
+    </form><br>
+
+    <script>
+function msg() {
+            alert("Inserted a part name")
+    window.location.replace("http://localhost:5000/parts");
+}
+</script>
+
+{% endblock body %}

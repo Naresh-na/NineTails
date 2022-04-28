@@ -1,0 +1,23 @@
+{% extends "layout.html" %}http://localhost:5000/
+{% block body %}
+    <h2>update part</h2><br><br>
+
+    <form action="" method="post">
+        {% for rows in rows %}
+
+            <b><label for="pid">Part id: {{ rows[0] }}</label><br><br></b>
+
+            <b><label for="pname">Part name:</label></b>
+            <input type="text" id="pname" name="pname" value="{{ rows[1] }}"><br><br>
+
+            <b><label for="address">Address:</label></b>
+            <input type="text" id="address" name="address" value="{{ rows[2] }}"><br><br>
+
+            <input type="submit" value="Update"/>
+            <button>  <a href="http://localhost:5000/vendor"> Cancel </a> </button>
+
+        {% endfor %}
+
+    </form><br>
+
+{% endblock body %}

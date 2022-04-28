@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Vendor Name.">
+</div>
+    <div>
+        <a href="/new_vendor" class="btn btn-outline-secondary">Add New</a><br><br>
+    </div>
+    <div>
+        <table id="myTable">
+            <tr>
+                <th>VENDOR ID</th>
+                <th>VENDOR NAME</th>
+                <th>ADDRESS</th>
+            </tr>
+            {% for rows in rows %}
+                <tr>
+                    <td>{{ rows[0] }}</td>
+                    <td>{{ rows[1] }}</td>
+                    <td>{{ rows[2] }}</td>
+                    <td style="width: 0px;background-color: white;border: none;"><a href="/delete_vendor/{{ rows[0] }}"
+                                                                                    class="btn btn-outline-secondary">delete</a>
+                    </td>
+                    <td style="width: 0px;background-color: white;border: none;"><a href="/update_vendor/{{ rows[0] }}"
+                                                                                    class="btn btn-outline-secondary">update</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div><br><br>
+
+    <script>
+function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName('tr');
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
+{% endblock body %}

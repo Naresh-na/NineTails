@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div>
+        <a href="/new_part" class="btn btn-outline-secondary">Add New</a><br><br>
+
+    </div>
+    <div>
+        <table id="myTable">
+            <tr>
+                <th>PART ID</th>
+                <th>PART NAME</th>
+            </tr>
+            {% for rows in rows %}
+                <tr>
+                    <td>{{ rows[0] }}</td>
+                    <td>{{ rows[1] }}</td>
+
+                    <td style = "width : 0px; background-color : white; border : black;"><a href = "/delete_part/{{ rows[0] }}" class = "btn btn-outline-secondary">delete</a>
+                    </td>
+                    <td style = "width : 0px; background-color : white; border : black;"><a href = "/update_part/{{ rows[0] }}" class = "btn btn-outline-secondary">update</a>
+                    </td>
+                    <td style = "width : 0px; background-color : white; border : none;"><a href = "/assign_vendor/{{ rows[0] }}" class = "btn btn-outline-secondary">Assign vendor</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock body %}
